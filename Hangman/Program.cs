@@ -45,6 +45,7 @@
                     {
                         char guessedLetter = char.ToUpper(input[0]);
                         Console.WriteLine($"You entered: {guessedLetter}");
+                        Console.WriteLine();
 
                         bool isCorrect = false;
                         for (int i = 0; i < mysteryWord.Length; i++)
