@@ -5,7 +5,8 @@
         static void Main(string[] args)
         {
             const int MAX_ATTEMPTS = 6;
-            int incorrectTries = 0;
+            const int CHARLENGTH = 1;
+            int incorrectTries = 0;            
 
             List<string> hangmanWords = new List<string>
             {
@@ -21,7 +22,7 @@
             int randomNumber = new Random().Next(0, hangmanWords.Count);
             string mysteryWord = hangmanWords[randomNumber];
 
-            char[] Guess = new char[mysteryWord.Length];
+            char[] Guess = new char[mysteryWord.Length]; //Initialize the character array "Guess"
             for (int i = 0; i < Guess.Length; i++)  // Initialize Guess with underscores
             {
                 Guess[i] = '_';
@@ -40,7 +41,7 @@
                     string input = Console.ReadLine();
                     Console.Clear();
 
-                    if (input != null && input.Length == charLength) // Check user input has a character length of 1
+                    if (input != null && input.Length == CHARLENGTH) // Check user input has a character length of 1
                     {
                         char guessedLetter = char.ToUpper(input[0]);
                         Console.WriteLine($"You entered: {guessedLetter}");
@@ -60,6 +61,7 @@
                             Console.WriteLine("Correct!");
                             Console.WriteLine();
                         }
+
                         else
                         {
                             incorrectTries++;
@@ -71,6 +73,7 @@
                         if (new string(Guess) == mysteryWord)
                         {
                             Console.WriteLine($"Congratulations! You've guessed the word. It was {mysteryWord}!");
+                            Console.WriteLine();
                             break;
                         }
                     }
