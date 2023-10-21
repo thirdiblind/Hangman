@@ -83,7 +83,11 @@
                     }
                 }
             }
-            Console.WriteLine("Press any key to exit.");
+            if (new string(Guess) != mysteryWord)
+            {
+                Console.WriteLine($"You lose. The correct word was {mysteryWord}");
+            }
+                Console.WriteLine("Press any key to exit.");
             Console.ReadKey();  // This line will pause the console until a key is pressed
         }
     }
