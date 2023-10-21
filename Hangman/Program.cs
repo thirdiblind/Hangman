@@ -40,7 +40,7 @@
                     string input = Console.ReadLine();
                     Console.Clear();
 
-                    if (input != null && input.Length == 1) // Check user input has a character length of 1
+                    if (input != null && input.Length == charLength) // Check user input has a character length of 1
                     {
                         char guessedLetter = char.ToUpper(input[0]);
                         Console.WriteLine($"You entered: {guessedLetter}");
