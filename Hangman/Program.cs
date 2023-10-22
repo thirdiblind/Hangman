@@ -22,10 +22,10 @@
             int randomNumber = new Random().Next(0, hangmanWords.Count);
             string mysteryWord = hangmanWords[randomNumber];
 
-            char[] Guess = new char[mysteryWord.Length]; //Initialize the character array "Guess"
-            for (int i = 0; i < Guess.Length; i++)  // Initialize Guess with underscores
+            char[] gameState = new char[mysteryWord.Length]; //Initialize the character array "gameState"
+            for (int i = 0; i < gameState.Length; i++)  // Initialize game state with underscores
             {
-                Guess[i] = '_';
+                gameState[i] = '_';
             }
 
             while (incorrectTries < MAX_ATTEMPTS)
@@ -34,7 +34,7 @@
                     Console.WriteLine("Hangman Game");
                     Console.WriteLine("============");
                     Console.WriteLine($"Guess the letters to a {mysteryWord.Length} letter word.\n");
-                    Console.WriteLine(Guess);
+                    Console.WriteLine(gameState);
                     Console.WriteLine();
 
                     Console.WriteLine("Enter a letter:");
@@ -49,13 +49,13 @@
                             if (mysteryWord[i] == upperKeyChar)
                             {
                                 isCorrect = true;
-                                Guess[i] = upperKeyChar;
+                                gameState[i] = upperKeyChar;
                             }
                         }
 
                         if (isCorrect == true)
                         {
-                            Console.WriteLine("Correct!");
+                            Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
                             Console.WriteLine();
                         }
 
@@ -65,17 +65,16 @@
                             Console.WriteLine("Wrong! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
                             Console.WriteLine();
                         }
-
-                        // Check if the word is completely guessed
-                        if (new string(Guess) == mysteryWord)
+                        // Check if the word is completely gameStateed
+                        if (new string(gameState) == mysteryWord)
                         {
-                            Console.WriteLine($"Congratulations! You've guessed the word. It was {mysteryWord}!");
+                            Console.WriteLine($"Congratulations! You've gameStateed the word. It was {mysteryWord}!");
                             Console.WriteLine();
                             break;
                         }
                 }
             }
-            if (new string(Guess) != mysteryWord)
+            if (new string(gameState) != mysteryWord)
             {
                 Console.WriteLine($"You lose. The correct word was {mysteryWord}");
             }
