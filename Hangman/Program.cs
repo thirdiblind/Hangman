@@ -6,7 +6,7 @@
         {
             const int MAX_ATTEMPTS = 6;
             const int CHARLENGTH = 1;
-            int incorrectTries = 0;            
+            int incorrectTries = 0;
 
             List<string> hangmanWords = new List<string>
             {
@@ -43,42 +43,42 @@
                     Console.WriteLine($"You entered {upperKeyChar}");
                     Console.WriteLine();
 
-                        bool isCorrect = false;
-                        for (int i = 0; i < mysteryWord.Length; i++)
+                    bool isCorrect = false;
+                    for (int i = 0; i < mysteryWord.Length; i++)
+                    {
+                        if (mysteryWord[i] == upperKeyChar)
                         {
-                            if (mysteryWord[i] == upperKeyChar)
-                            {
-                                isCorrect = true;
-                                gameState[i] = upperKeyChar;
-                            }
+                            isCorrect = true;
+                            gameState[i] = upperKeyChar;
                         }
+                    }
 
-                        if (isCorrect == true)
-                        {
-                            Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
-                            Console.WriteLine();
-                        }
-                        else
-                        {
-                            incorrectTries++;
-                            Console.WriteLine("Wrong! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
-                            Console.WriteLine();
-                        }
+                    if (isCorrect == true)
+                    {
+                        Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        incorrectTries++;
+                        Console.WriteLine("Wrong! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
+                        Console.WriteLine();
+                    }
 
-                        // Check if the word is completely gameStateed
-                        if (new string(gameState) == mysteryWord)
-                        {
-                            Console.WriteLine($"Congratulations! You've gameStateed the word. It was {mysteryWord}!");
-                            Console.WriteLine();
-                            break;
-                        }
+                    // Check if the word is completely gameStateed
+                    if (new string(gameState) == mysteryWord)
+                    {
+                        Console.WriteLine($"Congratulations! You've gameStateed the word. It was {mysteryWord}!");
+                        Console.WriteLine();
+                        break;
+                    }
                 }
             }
             if (new string(gameState) != mysteryWord)
             {
                 Console.WriteLine($"You lose. The correct word was {mysteryWord}");
             }
-                Console.WriteLine("Press any key to exit.");
+            Console.WriteLine("Press any key to exit.");
             Console.ReadKey();  // This line will pause the console until a key is pressed
         }
     }
