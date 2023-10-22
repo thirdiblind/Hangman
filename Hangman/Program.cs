@@ -58,13 +58,13 @@
                             Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
                             Console.WriteLine();
                         }
-
                         else
                         {
                             incorrectTries++;
                             Console.WriteLine("Wrong! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
                             Console.WriteLine();
                         }
+
                         // Check if the word is completely gameStateed
                         if (new string(gameState) == mysteryWord)
                         {
