@@ -38,19 +38,18 @@
                     Console.WriteLine();
 
                     Console.WriteLine("Enter a letter:");
-                    char keyChar = Console.ReadKey().KeyChar;
-                    Console.WriteLine($"You entered {keyChar}");
-                    Console.Clear();
-
-                        char guessedLetter = char.ToUpper(keyChar);
+                    char upperKeyChar = char.ToUpper(Console.ReadKey().KeyChar);
+                    Console.Clear(); //Clear text
+                    Console.WriteLine($"You entered {upperKeyChar}");
+                    Console.WriteLine();
 
                         bool isCorrect = false;
                         for (int i = 0; i < mysteryWord.Length; i++)
                         {
-                            if (mysteryWord[i] == guessedLetter)
+                            if (mysteryWord[i] == upperKeyChar)
                             {
                                 isCorrect = true;
-                                Guess[i] = guessedLetter;
+                                Guess[i] = upperKeyChar;
                             }
                         }
 
