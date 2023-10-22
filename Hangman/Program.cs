@@ -38,14 +38,11 @@
                     Console.WriteLine();
 
                     Console.WriteLine("Enter a letter:");
-                    string input = Console.ReadLine();
+                    char keyChar = Console.ReadKey().KeyChar;
+                    Console.WriteLine($"You entered {keyChar}");
                     Console.Clear();
 
-                    if (input != null && input.Length == CHARLENGTH) // Check user input has a character length of 1
-                    {
-                        char guessedLetter = char.ToUpper(input[0]);
-                        Console.WriteLine($"You entered: {guessedLetter}");
-                        Console.WriteLine();
+                        char guessedLetter = char.ToUpper(keyChar);
 
                         bool isCorrect = false;
                         for (int i = 0; i < mysteryWord.Length; i++)
@@ -77,11 +74,6 @@
                             Console.WriteLine();
                             break;
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please enter a single letter.");
-                    }
                 }
             }
             if (new string(Guess) != mysteryWord)
