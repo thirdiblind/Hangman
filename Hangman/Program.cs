@@ -40,8 +40,7 @@
                     Console.WriteLine("Enter a letter:");
                     char upperKeyChar = char.ToUpper(Console.ReadKey().KeyChar);
                     Console.Clear(); //Clear text
-                    Console.WriteLine($"You entered {upperKeyChar}");
-                    Console.WriteLine();
+                    Console.WriteLine($"You entered {upperKeyChar}\n");
 
                     bool isCorrect = false;
                     
@@ -56,14 +55,12 @@
 
                     if (isCorrect == true)
                     {
-                        Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
-                        Console.WriteLine();
+                        Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.\n");
                     }
                     else
                     {
                         incorrectTries++;
-                        Console.WriteLine("Wrong! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.");
-                        Console.WriteLine();
+                        Console.WriteLine("Wrong! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.\n");
                     }
 
                     // Check if the word is completely gameStateed
@@ -77,8 +74,7 @@
 
             if (hasUserWon == true)
             { 
-                Console.WriteLine($"Congratulations you guessed the correct word! It was z{mysteryWord}"); 
-                Console.WriteLine();
+                Console.WriteLine($"Congratulations you guessed the correct word! It was {mysteryWord}\n"); 
             }
             else
             {
