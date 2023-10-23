@@ -27,7 +27,7 @@
             {
                 gameState[i] = '_';
             }
-
+            bool hasUserWon = false;
             while (incorrectTries < MAX_ATTEMPTS)
             {
                 {
@@ -44,6 +44,7 @@
                     Console.WriteLine();
 
                     bool isCorrect = false;
+                    
                     for (int i = 0; i < mysteryWord.Length; i++)
                     {
                         if (mysteryWord[i] == upperKeyChar)
@@ -68,13 +69,18 @@
                     // Check if the word is completely gameStateed
                     if (new string(gameState) == mysteryWord)
                     {
-                        Console.WriteLine($"Congratulations! You've gameStateed the word. It was {mysteryWord}!");
-                        Console.WriteLine();
+                        hasUserWon |= true;
                         break;
                     }
                 }
             }
-            if (new string(gameState) != mysteryWord)
+
+            if (hasUserWon == true)
+            { 
+                Console.WriteLine($"Congratulations you guessed the correct word! It was z{mysteryWord}"); 
+                Console.WriteLine();
+            }
+            else
             {
                 Console.WriteLine($"You lose. The correct word was {mysteryWord}");
             }
