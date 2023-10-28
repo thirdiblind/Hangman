@@ -53,7 +53,7 @@
                     }
                 }
 
-                if (isCorrect == true)
+                if (isCorrect)
                 {
                     Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.\n");
                 }
@@ -65,11 +65,11 @@
 
                 if (new string(displayedWord) == mysteryWord)
                 {
-                    hasUserWon |= true;
-                    break;
+                    hasUserWon = true;
+                    break;  
                 }
             }
-            if (hasUserWon == true)
+            if (hasUserWon)
             {
                 Console.WriteLine($"Congratulations you guessed the correct word! It was {mysteryWord}\n");
             }
