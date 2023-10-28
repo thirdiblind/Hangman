@@ -5,7 +5,6 @@
         static void Main(string[] args)
         {
             const int MAX_ATTEMPTS = 6;
-            const int CHARLENGTH = 1;
 
             List<string> hangmanWords = new List<string>
             {
@@ -23,14 +22,13 @@
             string mysteryWord = hangmanWords[randomNumber];
             char[] displayedWord = new char[mysteryWord.Length]; //Initialize the character array "displayedWord"
 
-            int incorrectTries = 0;
             bool hasUserWon = false;
 
             for (int i = 0; i < displayedWord.Length; i++)  // Initialize game state with underscores
             {
                 displayedWord[i] = '_';
             }
-
+                int incorrectTries = 0;
                 while (incorrectTries < MAX_ATTEMPTS)
                 {
                     Console.WriteLine("Hangman Game");
