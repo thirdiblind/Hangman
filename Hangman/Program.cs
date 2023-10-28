@@ -31,8 +31,7 @@
                 displayedWord[i] = '_';
             }
 
-            while (incorrectTries < MAX_ATTEMPTS)
-            {
+                while (incorrectTries < MAX_ATTEMPTS)
                 {
                     Console.WriteLine("Hangman Game");
                     Console.WriteLine("============");
@@ -72,7 +71,6 @@
                         break;
                     }
                 }
-            }
             if (hasUserWon == true)
             { 
                 Console.WriteLine($"Congratulations you guessed the correct word! It was {mysteryWord}\n"); 
