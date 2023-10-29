@@ -21,13 +21,16 @@
                 "WAGON", "XENON", "YARN", "ZIGZAG"
                 };
 
+                List<char> lettersGuessed = new List<char>(); //A list to store letters that have been guessed by the user
+
                 int randomNumber = new Random().Next(0, hangmanWords.Count);
                 string mysteryWord = hangmanWords[randomNumber];
                 char[] displayedWord = new char[mysteryWord.Length]; //Initialize the character array "displayedWord"
 
+
                 bool hasUserWon = false;
 
-                for (int i = 0; i < displayedWord.Length; i++)  // Initialize game state with underscores
+                for (int i = 0; i < displayedWord.Length; i++)  // Initialize displayedWord with underscores
                 {
                     displayedWord[i] = '_';
                 }
@@ -41,6 +44,12 @@
                 while (incorrectTries < MAX_ATTEMPTS)
                 {
                     Console.WriteLine($"Guess the letters to a {mysteryWord.Length} letter word.\n");
+
+                    if (incorrectTries > 0)
+                    {
+                        Console.WriteLine($"Letters guessed so far: {string.Join(", ", lettersGuessed)}");
+                    }
+
                     Console.WriteLine(displayedWord);
                     Console.WriteLine();
                     Console.WriteLine("Enter a letter:");
@@ -49,25 +58,35 @@
                     Console.Clear(); //Clear text
                     Console.WriteLine($"You entered {upperKeyChar}\n");
 
-                    bool isCorrect = false;
-
-                    for (int i = 0; i < mysteryWord.Length; i++)
+                    if (!lettersGuessed.Contains(upperKeyChar))
                     {
-                        if (mysteryWord[i] == upperKeyChar)
+                        lettersGuessed.Add(upperKeyChar);
+
+                        bool isCorrect = false;
+
+                        for (int i = 0; i < mysteryWord.Length; i++)
                         {
-                            isCorrect = true;
-                            displayedWord[i] = upperKeyChar;
+                            if (mysteryWord[i] == upperKeyChar)
+                            {
+                                isCorrect = true;
+                                displayedWord[i] = upperKeyChar;
+                            }
                         }
-                    }
 
-                    if (isCorrect)
-                    {
-                        Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.\n");
+                        if (isCorrect)
+                        {
+                            Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.\n");
+                        }
+                        else
+                        {
+                            incorrectTries++;
+                            Console.WriteLine("Wrong! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.\n");
+                        }
                     }
                     else
                     {
-                        incorrectTries++;
-                        Console.WriteLine("Wrong! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.\n");
+                        Console.WriteLine($"You have " + (MAX_ATTEMPTS - incorrectTries) + $" attempts remaining. The letter {upperKeyChar} has already been guessed! \n");
+                        // No change to incorrectTries
                     }
 
                     if (new string(displayedWord) == mysteryWord)
@@ -89,7 +108,7 @@
                 Console.WriteLine("Do you want to play again? (Y/N):");
                 char replay = char.ToUpper(Console.ReadKey().KeyChar);
 
-                if (replay != 'Y')
+                if (replay == 'N')
                 {
                     gameActive = false;
                 }
