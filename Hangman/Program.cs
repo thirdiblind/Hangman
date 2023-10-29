@@ -107,12 +107,9 @@
                     // * * * * * * SECTION 5: Replay prompt * * * * * *
                 Console.WriteLine("Do you want to play again? (Y/N):");
                 char replay = char.ToUpper(Console.ReadKey().KeyChar);
-                if (replay == 'N')
-                {
-                    gameActive = false;
-                }
+                gameActive = (replay == 'Y');
 
-                    //Clear previous game data for a new round
+                //Clear previous game data for a new round
                 incorrectTries = 0;
                 hasUserWon = false;
                 Console.Clear();
