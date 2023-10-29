@@ -5,6 +5,7 @@
         static void Main(string[] args)
         {
             const int MAX_ATTEMPTS = 6;
+            
             bool gameActive = true;
 
             while (gameActive)
@@ -36,6 +37,7 @@
                 }
 
                 int incorrectTries = 0;
+               
 
                 Console.WriteLine("Hangman Game");
                 Console.WriteLine("============");
@@ -58,11 +60,16 @@
                     Console.Clear(); //Clear text
                     Console.WriteLine($"You entered {upperKeyChar}\n");
 
+                    int triesLeft;
+                    triesLeft = (MAX_ATTEMPTS - incorrectTries);
+
+
                     if (!lettersGuessed.Contains(upperKeyChar))
                     {
                         lettersGuessed.Add(upperKeyChar);
 
                         bool isCorrect = false;
+                        
 
                         for (int i = 0; i < mysteryWord.Length; i++)
                         {
@@ -75,17 +82,19 @@
 
                         if (isCorrect)
                         {
-                            Console.WriteLine("Correct! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.\n");
+                            Console.WriteLine($"Correct! You have {triesLeft} attempts remaining.\n");
                         }
                         else
                         {
                             incorrectTries++;
-                            Console.WriteLine("Wrong! You have " + (MAX_ATTEMPTS - incorrectTries) + " attempts remaining.\n");
+                            triesLeft = (MAX_ATTEMPTS - incorrectTries);
+                            Console.WriteLine($"Wrong! You have {triesLeft} attempts remaining.\n");
                         }
+
                     }
                     else
                     {
-                        Console.WriteLine($"You have " + (MAX_ATTEMPTS - incorrectTries) + $" attempts remaining. The letter {upperKeyChar} has already been guessed! \n");
+                        Console.WriteLine($"You have {triesLeft} attempts remaining. The letter {upperKeyChar} has already been guessed! \n");
                         // No change to incorrectTries
                     }
 
