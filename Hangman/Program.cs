@@ -31,16 +31,20 @@
                 {
                     displayedWord[i] = '_';
                 }
+
                 int incorrectTries = 0;
+
+                Console.WriteLine("Hangman Game");
+                Console.WriteLine("============");
+                Console.WriteLine("Welcome to Hangman! Guess the hidden word one letter at a time. Be careful as too many wrong guesses ends the game!\n");
+
                 while (incorrectTries < MAX_ATTEMPTS)
                 {
-                    Console.WriteLine("Hangman Game");
-                    Console.WriteLine("============");
                     Console.WriteLine($"Guess the letters to a {mysteryWord.Length} letter word.\n");
                     Console.WriteLine(displayedWord);
                     Console.WriteLine();
-
                     Console.WriteLine("Enter a letter:");
+
                     char upperKeyChar = char.ToUpper(Console.ReadKey().KeyChar);
                     Console.Clear(); //Clear text
                     Console.WriteLine($"You entered {upperKeyChar}\n");
@@ -92,6 +96,7 @@
 
                 Console.Clear();
             }
+
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();  // This line will pause the console until a key is pressed
         }
