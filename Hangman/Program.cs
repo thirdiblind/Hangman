@@ -2,6 +2,7 @@
 {
     class Program
     {
+        public static readonly Random random = new Random();
         static void Main(string[] args)
         {
             const int MAX_ATTEMPTS = 6;
@@ -28,7 +29,7 @@
 
                 List<char> lettersGuessed = new List<char>(); //A list to store letters that have been guessed by the user
 
-                int randomNumber = new Random().Next(0, hangmanWords.Count);
+                int randomNumber = random.Next(0, hangmanWords.Count);
                 string mysteryWord = hangmanWords[randomNumber];
                 char[] displayedWord = new char[mysteryWord.Length]; //Initialize the character array "displayedWord"
 
@@ -105,7 +106,7 @@
                 }
 
                     // * * * * * * SECTION 5: Replay prompt * * * * * *
-                Console.WriteLine("Do you want to play again? (Y/N):");
+                Console.WriteLine("Do you want to play again? Press Y");
                 char replay = char.ToUpper(Console.ReadKey().KeyChar);
                 gameActive = (replay == 'Y');
 
