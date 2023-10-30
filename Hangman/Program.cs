@@ -6,6 +6,9 @@
         static void Main(string[] args)
         {
             const int MAX_ATTEMPTS = 6;
+            const char PLACEHOLDER_CHAR = '_';
+            const char YES_CHAR = 'Y'; 
+
             bool hasUserWon = false;
             int incorrectTries = 0;
 
@@ -35,7 +38,7 @@
 
                 for (int i = 0; i < displayedWord.Length; i++)
                 {
-                    displayedWord[i] = '_';
+                    displayedWord[i] = PLACEHOLDER_CHAR;
                 }
 
                 Console.WriteLine("Welcome to Hangman! Guess the hidden word one letter at a time. Be careful as too many wrong guesses ends the game!\n");
@@ -106,9 +109,9 @@
                 }
 
                     // * * * * * * SECTION 5: Replay prompt * * * * * *
-                Console.WriteLine("Do you want to play again? Press Y");
+                Console.WriteLine("Do you want to play again? Press Y or y");
                 char replay = char.ToUpper(Console.ReadKey().KeyChar);
-                gameActive = (replay == 'Y');
+                gameActive = (replay == YES_CHAR);
 
                 //Clear previous game data for a new round
                 incorrectTries = 0;
